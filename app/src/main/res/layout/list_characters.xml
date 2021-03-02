@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="character"
-            type="com.example.userlist.Models.Character" />
+            type="com.example.userlist.MainActivity.Character" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,42 +21,46 @@
             android:padding="6dp">
             <ImageView
                 android:id="@+id/iconIV"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:URL="@{character.image}"
+                android:layout_width="80dp"
+                android:layout_height="150dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
+                android:layout_gravity="center">
             </ImageView>
             <LinearLayout
-                android:id="@+id/linearLy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="4dp"
-                android:layout_toEndOf="@id/iconIV"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/iconIV"
+                android:paddingLeft="10dp"
                 android:orientation="vertical">
-                <TextView
+            <TextView
                     android:id="@+id/char_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
                     android:text="@{character.name}"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/char_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@{character.}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true"/>
             <TextView
                 android:id="@+id/char_tech"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 android:text="@{character.technique}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>
-
+            </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

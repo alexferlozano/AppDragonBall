@@ -3,28 +3,14 @@ package com.example.userlist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.userlist.Adapter.CharacterAdapter;
 import com.example.userlist.Adapter.UserAdapter;
 import com.example.userlist.ViewModel.CharacterViewModel;
 import com.example.userlist.ViewModel.UserViewModel;
 import com.example.userlist.databinding.ActivityMainBinding;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-
-import java.lang.reflect.Type;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
@@ -36,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         this.mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         this.userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         this.characterViewModel = new ViewModelProvider(this).get(CharacterViewModel.class);
-        //getCharacters();
-        //observeCharacters();
-        getUsers();
-        observeUsers();
+        getCharacters();
+        observeCharacters();
+        //getUsers();
+        //observeUsers();
     }
     private void observeUsers(){
         this.userViewModel.getUsers().observe(this, users -> {
@@ -69,5 +55,62 @@ public class MainActivity extends AppCompatActivity {
     }
     private void getUsers() {
         this.userViewModel.getUser(getApplicationContext());
+    }
+
+    public static class Character {
+        private int id;
+        private String name;
+        private String nickname;
+        private String username;
+        private String technique;
+        private String image;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getTechnique() {
+            return technique;
+        }
+
+        public void setTechnique(String technique) {
+            this.technique = technique;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public Character(int id, String name, String username, String technique, String image) {
+            this.id = id;
+            this.name = name;
+            this.username = username;
+            this.technique = technique;
+            this.image = image;
+        }
     }
 }

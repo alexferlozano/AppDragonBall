@@ -6,17 +6,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.userlist.Models.Character;
-import com.example.userlist.User;
+import com.example.userlist.MainActivity;
 import com.example.userlist.databinding.ListCharactersBinding;
-import com.example.userlist.databinding.ListUsersBinding;
 
 import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
-    private final List<Character> charactersList;
+    private final List<MainActivity.Character> charactersList;
 
-    public CharacterAdapter (List<Character> charactersList) {
+    public CharacterAdapter (List<MainActivity.Character> charactersList) {
         this.charactersList=charactersList;
     }
 
@@ -32,7 +30,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     @Override
     public void onBindViewHolder(final CharacterAdapter.ViewHolder holder, final int position)
     {
-        final Character character = this.charactersList.get(position);
+        final MainActivity.Character character = this.charactersList.get(position);
         holder.bind(character);
     }
 
@@ -50,7 +48,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             super(listView.getRoot());
             this.listCharactersBinding=listView;
         }
-        private void bind (Character character){ this.listCharactersBinding.setCharacter(character);
+        private void bind (MainActivity.Character character){ this.listCharactersBinding.setCharacter(character);
         }
     }
 }

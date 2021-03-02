@@ -11,10 +11,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.userlist.Models.Character;
-import com.example.userlist.User;
+import com.example.userlist.MainActivity;
 import com.example.userlist.VolleySingleton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -32,7 +32,7 @@ public class CharacterViewModel extends AndroidViewModel {
     }
 
     public void getCharacter(Context ctx){
-        String url = "ttp://localhost:3333/characters";
+        String url = "http://192.168.0.13:3333/characters";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
